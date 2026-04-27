@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 
 export function CTA() {
   return (
-    <section className="py-24 bg-surface relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-surface relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-[500px] bg-primary-600/10 blur-[100px] rounded-full pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
@@ -19,22 +20,27 @@ export function CTA() {
             <Clock className="text-primary-500" size={32} />
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Seu eu do futuro está te agradecendo pela decisão de <span className="gradient-text">hoje.</span>
           </h2>
           
-          <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-zinc-400 mb-10 max-w-xl mx-auto">
             Quanto mais você adia sua organização, mais distante fica o seu sonho. O tempo não para. <strong>Você vai acelerar ou ficar para trás?</strong>
           </p>
           
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-orange-500 text-black text-lg font-bold rounded-full inline-flex items-center gap-3 glow-effect transition-all"
+          <Link
+            href="/auth/login"
+            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-orange-500 text-black font-semibold rounded-full flex items-center justify-center gap-2 glow-effect transition-all cursor-pointer mx-auto"
           >
-            Traçar a Rota do Meu Sonho Agora
-            <ArrowRight size={24} />
-          </motion.button>
+            <motion.div
+              className="flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Caminho da prosperidade
+              <ArrowRight size={20} />
+            </motion.div>
+          </Link>
         </motion.div>
       </div>
     </section>

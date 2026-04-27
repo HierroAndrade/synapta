@@ -10,7 +10,9 @@
 - [ ] Usar **Supabase Auth** para login/registro — nunca implementar autenticação do zero.
 - [ ] Sessões gerenciadas via Supabase (JWT com refresh token automático).
 - [ ] Rotas protegidas no Next.js usando middleware ou `getServerSideProps` com verificação de sessão.
-- [ ] Nunca armazenar senhas ou tokens sensíveis em `localStorage` — utilizar cookies `httpOnly`.
+- [ ] **NUNCA** armazenar tokens, senhas ou dados sensíveis em `localStorage` ou `sessionStorage`. Estes são vulneráveis a XSS.
+- [ ] Sempre utilizar cookies com atributos `httpOnly`, `Secure`, `SameSite=Strict` para armazenar tokens de autenticação.
+- [ ] O backend deve setar o cookie via header `Set-Cookie` no momento do login/register — o frontend não manipula o token diretamente.
 
 ---
 
@@ -45,6 +47,7 @@
 - [ ] Implementar **rate limiting** em todas as rotas do Express (usar `express-rate-limit`).
 - [ ] Configurar **CORS** explicitamente — apenas origens autorizadas (Vercel domain + localhost dev).
 - [ ] Usar **helmet.js** no Express para headers de segurança HTTP padrão.
+- [ ] Configurar **limite de tamanho do body JSON** no Express: `express.json({ limit: "10kb" })` — previne ataques DoS por JSON Bomb.
 - [ ] Rotas que consomem LLM (OpenAI, etc.) devem ter rate limit mais restritivo.
 
 ---
@@ -75,3 +78,12 @@
 | Rate limiting na rota nova | ☐ |
 | `npm audit` sem vulnerabilidades críticas | ☐ |
 | CORS e headers configurados | ☐ |
+
+---
+
+## 9. Prevenção de Abuso de Reembolso (Refund Abuse)
+
+- [ ] **Exigência de CPF:** Para processar qualquer reembolso (Art. 49 CDC), o usuário deve obrigatoriamente fornecer e validar o CPF. Isso permite o rastreio de usuários recorrentes.
+- [ ] **Blacklist de Reincidentes:** Se um CPF solicitar reembolso mais de uma vez para o mesmo produto, a conta deve ser marcada para revisão manual ou bloqueio automático de novas assinaturas.
+- [ ] **Log de Visualização:** Registrar se o usuário acessou informações sensíveis (como a Carteira Recomendada) antes de solicitar o reembolso, para identificar padrões de má-fé.
+- [ ] **Integração com Gateway:** Utilizar as ferramentas de proteção contra fraude do gateway (ex: Stripe Radar) para identificar cartões de crédito associados a múltiplos reembolsos.

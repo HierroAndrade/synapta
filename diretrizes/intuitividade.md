@@ -11,6 +11,7 @@
   - ❌ "Rendimento bruto acumulado no período"
   - ✅ "Quanto você ganhou até agora"
 - [ ] Valores sempre em real brasileiro formatado: `R$ 1.250,00`.
+- [ ] Sempre que houver um input de valor financeiro, inclua formatação de milhar com pontos em tempo real (ex: em vez de `10000`, exibir `10.000`).
 - [ ] Datas em formato brasileiro: `11 de abril de 2026`.
 - [ ] Textos de erro explicam **o que aconteceu** e **o que o usuário deve fazer**.
   - ❌ "Erro 422"

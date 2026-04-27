@@ -16,6 +16,14 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"],
+  [role="button"] {
+    cursor: pointer;
+  }
 }
 
 body {

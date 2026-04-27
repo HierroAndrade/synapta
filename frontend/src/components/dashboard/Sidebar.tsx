@@ -1,0 +1,136 @@
+"use client";
+
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { AuthService } from "@/services/auth/AuthService";
+import { motion } from "framer-motion";
+import {
+  LayoutDashboard,
+  ScanSearch,
+  TrendingUp,
+  Wallet,
+  MessageSquareText,
+  ChartNoAxesCombined,
+  Lock,
+  Target,
+  CreditCard,
+  ArrowLeft,
+  User,
+  LogOut,
+  Briefcase,
+  LifeBuoy,
+} from "lucide-react";
+
+type NavItem = {
+  icon: React.ElementType;
+  label: string;
+  locked: boolean;
+};
+
+const navItems: NavItem[] = [
+  { icon: Target, label: "Criar minha Rota", locked: false },
+  { icon: LayoutDashboard, label: "Dashboard", locked: true },
+  { icon: Wallet, label: "Minha Carteira", locked: true },
+  { icon: Briefcase, label: "Carteiras Recomendadas", locked: true },
+  { icon: ScanSearch, label: "Screening de Ações", locked: true },
+  { icon: ChartNoAxesCombined, label: "Otimizador Markowitz", locked: true },
+  { icon: TrendingUp, label: "Planejamento Financeiro", locked: true },
+  { icon: MessageSquareText, label: "Consultor IA", locked: true },
+  { icon: CreditCard, label: "Planos", locked: false },
+  { icon: LifeBuoy, label: "Suporte", locked: false },
+];
+
+export function Sidebar() {
+  const { signOut } = useAuth();
+  const [userName, setUserName] = useState("Carregando...");
+
+  useEffect(() => {
+    AuthService.getMe()
+      .then((user) => {
+        if (user?.user_metadata?.full_name) {
+          // Extrai apenas o primeiro nome para não quebrar o layout
+          const firstName = user.user_metadata.full_name.split(" ")[0];
+          setUserName(firstName);
+        } else {
+          setUserName("Minha Conta");
+        }
+      })
+      .catch(() => setUserName("Minha Conta"));
+  }, []);
+
+  return (
+    <aside className="fixed top-0 left-0 h-full w-64 bg-surface border-r border-white/5 flex flex-col z-40 pt-6 pb-8">
+      {/* Logo */}
+      <div className="px-6 mb-10 flex items-center gap-2.5">
+        <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-orange-600 rounded-lg flex items-center justify-center shrink-0">
+          <span className="text-black font-bold text-base leading-none">S</span>
+        </div>
+        <span className="font-bold text-lg tracking-tight">
+          Synapta<span className="text-primary-500">Invest</span>
+        </span>
+      </div>
+
+      {/* Nav */}
+      <nav className="flex-1 px-3 space-y-1">
+        {navItems.map((item, i) => {
+          const Icon = item.icon;
+          const isActive = !item.locked;
+
+          return (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.05 }}
+            >
+              <div
+                className={`
+                  flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all
+                  ${isActive
+                    ? "hover:bg-primary-500/10 hover:text-primary-400 text-zinc-300 cursor-pointer"
+                    : "text-zinc-600 cursor-not-allowed select-none"
+                  }
+                  ${item.label === "Criar minha Rota" ? "bg-primary-500/10 text-primary-400 border border-primary-500/20" : "border border-transparent"}
+                `}
+              >
+                <Icon size={16} className={isActive && item.label === "Criar minha Rota" ? "text-primary-400" : (isActive ? "text-zinc-400" : "text-zinc-700")} />
+                <span className="flex-1">{item.label}</span>
+                {item.locked && (
+                  <Lock size={12} className="text-zinc-700 shrink-0" />
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
+      </nav>
+
+      {/* Bottom Actions */}
+      <div className="px-4 mt-auto flex flex-col gap-4">
+        <Link 
+          href="/" 
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-all"
+        >
+          <ArrowLeft size={16} />
+          <span>Voltar para o site</span>
+        </Link>
+        
+        <div className="pt-4 border-t border-white/5 flex items-center justify-between px-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
+              <User size={14} className="text-zinc-400" />
+            </div>
+            <span className="text-sm font-medium text-zinc-300 truncate max-w-[100px]">{userName}</span>
+          </div>
+          <button 
+            onClick={signOut}
+            className="p-2 text-zinc-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all shrink-0"
+            title="Sair"
+          >
+            <LogOut size={16} />
+          </button>
+        </div>
+      </div>
+    </aside>
+  );
+}

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export function Problem() {
   return (
-    <section className="py-24 bg-surface relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-surface relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       

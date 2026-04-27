@@ -1,31 +1,30 @@
+import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { Problem } from "@/components/Problem";
 import { Solutions } from "@/components/Solutions";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { CTA } from "@/components/CTA";
+import { Guarantee } from "@/components/Guarantee";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Navbar Placeholder (could be a separate component but simple enough here) */}
-      <header className="fixed top-0 inset-x-0 h-20 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-6 lg:px-12">
-        <div className="flex items-center gap-2">
-           <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-orange-600 rounded-lg flex items-center justify-center">
-            <span className="text-black font-bold text-xl leading-none">S</span>
+      <header className="fixed top-0 inset-x-0 h-20 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-4 sm:px-6 lg:px-12">
+        <div className="flex items-center gap-2 shrink-0">
+           <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-primary-500 to-orange-600 rounded-lg flex items-center justify-center shrink-0">
+            <span className="text-black font-bold text-lg sm:text-xl leading-none">S</span>
            </div>
-           <span className="font-bold text-xl tracking-tight">Synapta<span className="text-primary-500">Invest</span></span>
+           <span className="font-bold text-lg sm:text-xl tracking-tight shrink-0">Synapta<span className="text-primary-500">Invest</span></span>
         </div>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <a href="#" className="hover:text-white transition-colors">Produtos</a>
-          <a href="#" className="hover:text-white transition-colors">Depoimentos</a>
-          <a href="#" className="hover:text-white transition-colors">Planos</a>
-        </nav>
-        <div className="flex items-center gap-4">
-          <a href="#" className="text-sm font-medium hover:text-white transition-colors hidden sm:block">Entrar</a>
-          <button className="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-black text-sm font-semibold rounded-full transition-colors">
-            Cadastre-se
-          </button>
+        <div className="flex items-center">
+          <Link 
+            href="/auth/login" 
+            className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 text-black text-sm font-bold rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(245,158,11,0.2)] whitespace-nowrap"
+          >
+            Entrar na plataforma
+          </Link>
         </div>
       </header>
 
@@ -34,6 +33,7 @@ export default function Home() {
       <Solutions />
       <Testimonials />
       <Pricing />
+      <Guarantee />
       <CTA />
 
       {/* Footer */}
