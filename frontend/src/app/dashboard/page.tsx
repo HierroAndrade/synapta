@@ -28,10 +28,10 @@ export default function DashboardPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-xs font-semibold text-primary-400 mb-4">
               <Sparkles size={12} className="animate-pulse" />
-              IA Synapta pronta para calcular sua rota
+              IA Synapta pronta para seu planejamento financeiro
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Vamos criar a sua <span className="gradient-text">rota financeira</span>
+              Vamos fazer o seu <span className="gradient-text">planejamento financeiro</span>
             </h1>
             <p className="text-sm text-zinc-500 leading-relaxed">
               Responda as perguntas abaixo para que a IA Synapta possa montar sua estratégia personalizada e desbloquear as ferramentas da plataforma.

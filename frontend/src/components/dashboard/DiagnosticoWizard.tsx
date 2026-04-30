@@ -88,9 +88,9 @@ export function DiagnosticoWizard() {
             {etapaAtual === 5 && "Sua segurança financeira 🛡️"}
           </h2>
           <p className="text-sm text-zinc-500 mt-1">
-            {etapaAtual === 1 && "Precisamos entender sua renda e gastos para montar sua rota."}
+            {etapaAtual === 1 && "Precisamos entender sua renda e gastos para montar seu planejamento."}
             {etapaAtual === 2 && "Seu ponto de partida define a estratégia ideal."}
-            {etapaAtual === 3 && "Seus sonhos são o destino. A Synapta trará a rota."}
+            {etapaAtual === 3 && "Seus sonhos são o destino. A Synapta trará o plano."}
             {etapaAtual === 4 && "Sua psicologia com investimentos determina a alocação certa."}
             {etapaAtual === 5 && "A base de qualquer estratégia sólida é a proteção."}
           </p>

@@ -28,12 +28,11 @@
 | # | Produto | Rota | Status | APIs Externas |
 |---|---------|------|--------|---------------|
 | 01 | [Autenticação & Perfil](./01-autenticacao-e-perfil.md) | `/auth/login`, `/auth/cadastro` | ✅ Completo | Supabase Auth |
-| 02 | [Onboarding: Diagnóstico Financeiro](./02-onboarding-diagnostico-financeiro.md) | `/onboarding` | ✅ Completo | Supabase DB |
+| 02 | [Planejamento Financeiro](./02-planejamento-financeiro.md) | `/onboarding` | ✅ Completo | Supabase DB |
 | 03 | [Screening de Ações](./03-screening-de-acoes.md) | `/screening` | ✅ Funcional | Yahoo Finance |
 | 04 | [Otimizador Markowitz](./04-otimizador-markowitz.md) | `/markowitz` | ✅ Completo | Nenhuma |
 | 05 | [Dashboard Principal](./05-dashboard-principal.md) | `/dashboard` | ✅ Funcional | Supabase DB |
 | 06 | [Gestão de Carteira](./06-gestao-de-carteira.md) | `/carteira` | ✅ Funcional | Supabase DB |
-| 07 | [Financeiro: Plano & Objetivos](./07-financeiro-plano-e-objetivos.md) | `/financeiro` | ✅ Completo | Supabase DB |
 | 08 | [Consultor Synapta (Chat IA)](./08-consultor-synapta-chat-ia.md) | `/chat` | ⚠️ Mock (sem IA real) | Nenhuma |
 | 09 | [Painel Administrativo](./09-painel-administrativo.md) | `/admin` | ✅ Funcional | Supabase DB |
 | 10 | [Landing Page](./10-landing-page-e-servico-de-precos.md) | `/` | ✅ Completa | Nenhuma |
@@ -47,8 +46,8 @@
 Autenticação (01)
   └── Alimenta: TODOS os outros produtos
 
-Onboarding (02)
-  └── Alimenta: Dashboard (05), Financeiro (07), Chat (08)
+Onboarding / Planejamento (02)
+  └── Alimenta: Dashboard (05), Chat (08)
 
 Serviço de Preços (11)
   └── Alimenta: Screening (03)
@@ -70,10 +69,8 @@ Admin (09)
 | Tabela | Produto responsável | CRUD |
 |--------|---------------------|------|
 | `profiles` | Autenticação (01) | R/U via useAuth |
-| `onboarding_data` | Onboarding (02) | C/R/U |
+| `onboarding_data` | Planejamento (02) | C/R/U |
 | `transacoes` | Carteira (06) | C/R |
-| `metas` | Financeiro (07) | C/R/U |
-| `dividas` | Financeiro (07) | C/R/U (soft delete) |
 | `carteiras_recomendadas` | Admin (09) | R/U |
 | `carteira_ativos` | Admin (09) | R/U |
 
@@ -141,11 +138,11 @@ VITE_STRIPE_PUBLISHABLE_KEY=pk_...
 | Fase | Status | Escopo |
 |------|--------|--------|
 | Fase 1: Landing + Estrutura | ✅ Completa | Landing page + rotas |
-| Fase 2: Auth + Onboarding | ✅ Completa | Login + diagnóstico |
+| Fase 2: Auth + Planejamento | ✅ Completa | Login + diagnóstico |
 | Fase 3: Screening + Ativo | ✅ Parcial | Screening ok, página `/acao/:ticker` ausente |
 | Fase 4: Dashboard + Carteira | ✅ Funcional | Preços estáticos |
 | Fase 5: Markowitz Engine | ✅ Completa | Engine total em TypeScript |
-| Fase 6: Chat IA + Financeiro | ⚠️ Parcial | Financeiro ok, Chat sem IA |
+| Fase 6: Chat IA + Dashboard | ⚠️ Parcial | Dashboard ok, Chat sem IA |
 | Fase 7: Admin Panel | ✅ Funcional | Sem upload de PDFs |
 | Fase 8: Polimento + Deploy | ❌ Pendente | — |
 

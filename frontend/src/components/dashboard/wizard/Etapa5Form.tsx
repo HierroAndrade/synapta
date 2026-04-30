@@ -146,7 +146,7 @@ export function Etapa5Form({ onNext, onBack, isLoading, gastosMensais }: Props) 
           className="flex-[2] py-3 rounded-full font-semibold text-sm bg-gradient-to-r from-primary-500 to-primary-600 text-black flex items-center justify-center gap-2 glow-effect cursor-pointer hover:from-primary-600 hover:to-orange-500 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {isLoading ? (
-            <><Loader2 size={16} className="animate-spin" /> Calculando sua rota...</>
+            <><Loader2 size={16} className="animate-spin" /> Gerando seu planejamento...</>
           ) : (
             <>Gerar meu diagnóstico <ArrowRight size={16} /></>
           )}

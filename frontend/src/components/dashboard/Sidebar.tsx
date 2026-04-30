@@ -29,13 +29,12 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { icon: Target, label: "Criar minha Rota", locked: false },
+  { icon: Target, label: "Planejamento Financeiro", locked: false },
   { icon: LayoutDashboard, label: "Dashboard", locked: true },
   { icon: Wallet, label: "Minha Carteira", locked: true },
   { icon: Briefcase, label: "Carteiras Recomendadas", locked: true },
   { icon: ScanSearch, label: "Screening de Ações", locked: true },
   { icon: ChartNoAxesCombined, label: "Otimizador Markowitz", locked: true },
-  { icon: TrendingUp, label: "Planejamento Financeiro", locked: true },
   { icon: MessageSquareText, label: "Consultor IA", locked: true },
   { icon: CreditCard, label: "Planos", locked: false },
   { icon: LifeBuoy, label: "Suporte", locked: false },
@@ -91,10 +90,10 @@ export function Sidebar() {
                     ? "hover:bg-primary-500/10 hover:text-primary-400 text-zinc-300 cursor-pointer"
                     : "text-zinc-600 cursor-not-allowed select-none"
                   }
-                  ${item.label === "Criar minha Rota" ? "bg-primary-500/10 text-primary-400 border border-primary-500/20" : "border border-transparent"}
+                  ${item.label === "Planejamento Financeiro" ? "bg-primary-500/10 text-primary-400 border border-primary-500/20" : "border border-transparent"}
                 `}
               >
-                <Icon size={16} className={isActive && item.label === "Criar minha Rota" ? "text-primary-400" : (isActive ? "text-zinc-400" : "text-zinc-700")} />
+                <Icon size={16} className={isActive && item.label === "Planejamento Financeiro" ? "text-primary-400" : (isActive ? "text-zinc-400" : "text-zinc-700")} />
                 <span className="flex-1">{item.label}</span>
                 {item.locked && (
                   <Lock size={12} className="text-zinc-700 shrink-0" />

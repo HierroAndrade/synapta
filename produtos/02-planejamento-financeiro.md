@@ -1,7 +1,7 @@
-# Produto 02 — Onboarding: Diagnóstico Financeiro Pessoal
+# Produto 02 — Planejamento Financeiro (Diagnóstico Pessoal)
 
 ## O que é?
-Um questionário guiado em **6 etapas** que coleta dados financeiros do usuário para gerar um **diagnóstico personalizado** com perfil de risco, alocação sugerida e alertas financeiros. É o produto que "alimenta" todos os outros com dados pessoais do usuário.
+Um questionário guiado em **6 etapas** que coleta dados financeiros do usuário para gerar um **planejamento financeiro personalizado** com perfil de risco, alocação sugerida e alertas financeiros. É o produto que "alimenta" todos os outros com dados pessoais do usuário.
 
 ---
 
@@ -14,7 +14,7 @@ Um questionário guiado em **6 etapas** que coleta dados financeiros do usuário
 | **Definição de objetivos** | O que quer conquistar financeiramente e em quanto tempo |
 | **Diagnóstico de perfil de risco** | Avaliação comportamental (reação a quedas, experiência, % em risco) |
 | **Análise de proteção** | Seguro de vida, plano de saúde, dependentes, reserva de emergência |
-| **Diagnóstico final** | Perfil calculado automaticamente com alocação e métricas |
+| **Planejamento final** | Perfil calculado automaticamente com alocação e métricas |
 | **Alertas personalizados** | Identifica problemas como dívidas caras e reserva insuficiente |
 | **Persistência** | Salva todos os dados no Supabase e atualiza o perfil do usuário |
 
@@ -201,6 +201,6 @@ pontos >= 8  → "arrojado"
 
 ## Observações
 
-> O onboarding é **obrigatório** — se o usuário não completou, é redirecionado para `/onboarding` após o login. Isso é controlado pela flag `onboarding_completo` na tabela `profiles`.
+> O planejamento é **obrigatório** — se o usuário não completou, é redirecionado para `/onboarding` após o login. Isso é controlado pela flag `onboarding_completo` na tabela `profiles`.
 
-> Os dados do onboarding **alimentam diretamente** os produtos de Financeiro, Dashboard e Carteiras Recomendadas.
+> Os dados do planejamento **alimentam diretamente** os produtos de Dashboard e Carteiras Recomendadas.
